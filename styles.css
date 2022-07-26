@@ -1,3 +1,8 @@
+:root {
+    --grid-col: 16;
+    --grid-row: 16;
+}
+
 *, *::after, *::before {
     box-sizing: border-box;
     margin: 0;
