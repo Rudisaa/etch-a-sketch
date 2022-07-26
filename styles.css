@@ -3,3 +3,90 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding: 1em;
+}
+
+.etch-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+}
+
+.selection-container {
+    align-items: center;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    height: 35em;
+    justify-content: center;
+    width: 15em;
+}
+
+.color-selector{
+    border: none;
+    width: 8em;
+}
+
+.color-picker {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.color-picker button {
+    align-items: center;
+    border: none;
+    display: flex;
+    height: 2em;
+    justify-content: center;
+    margin-top: 2em;
+    width: 8em;
+}
+
+.color-picker button:hover {
+    background-color: aqua;
+}
+
+.grid-slider {
+    margin-top: 3em;
+}
+
+
+.grid-size {
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.grid-container {
+    align-items: center;
+    background-color: azure;
+    display: flex;
+    height: 35em;
+    width: 40em;
+    justify-content: center;
+}
+
+.grid {
+    border: #131313 solid;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    height: 25em;
+    width: 25em;
+}
+
+.grid-tile {
+    border: .01em #131313 solid;
+    grid-column: span 1;
+    grid-row: span 1;
+    
+}
