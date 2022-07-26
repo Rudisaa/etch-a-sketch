@@ -1,6 +1,6 @@
 :root {
-    --grid-col: 16;
-    --grid-row: 16;
+    --grid-col: 1;
+    --grid-row: 1;
 }
 
 *, *::after, *::before {
@@ -83,8 +83,8 @@ body {
 .grid {
     border: #131313 solid;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(var(--grid-col), 1fr);
+    grid-template-rows: repeat(var(--grid-row), 1fr);
     height: 25em;
     width: 25em;
 }
