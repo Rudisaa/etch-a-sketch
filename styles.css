@@ -1,6 +1,7 @@
 :root {
     --grid-col: 1;
     --grid-row: 1;
+    --grid-color-change: #000;
 }
 
 *, *::after, *::before {
@@ -85,8 +86,8 @@ body {
     display: grid;
     grid-template-columns: repeat(var(--grid-col), 1fr);
     grid-template-rows: repeat(var(--grid-row), 1fr);
-    height: 25em;
-    width: 25em;
+    height: 30em;
+    width: 30em;
 }
 
 .grid-tile {
