@@ -96,3 +96,7 @@ body {
     grid-row: span 1;
     
 }
+
+.color-change {
+    background-color: var(--grid-color-change);
+}
