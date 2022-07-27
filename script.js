@@ -1,10 +1,16 @@
 const gridSlider = document.querySelector('.grid-size-slider');
 const gridSize = document.querySelector('.grid-size');
+const gridTile = document.querySelector('grid-tile');
+const colorPick = document.querySelector('.color-selector');
 gridSlider.addEventListener('input', gridCreate);
+
+
+
 const defaultGridCSS = 16;
 const defaultDivAmount = 256;
 
-defaultState(); 
+defaultState();
+
 
 
 //default grid 
@@ -12,10 +18,15 @@ function defaultState() {
     const defaultGridSize =  document.querySelector(':root'); // grabbing :root in css file to change the row and column variables
     const gridContainer = document.querySelector('.grid'); // grabbing container to create tiles inside of it
     const slider = document.querySelector('.grid-size-slider');
+    const defaultColorMode = document.querySelector('.color-mode');
+
+    defaultColorMode.classList.add('active');
     
     
     defaultGridSize.style.setProperty('--grid-col', defaultGridCSS) // setting grid-columns to 16
     defaultGridSize.style.setProperty('--grid-row', defaultGridCSS) // setting grid-rows to 16;
+
+
 
    
     // loop through and create default div amount
@@ -41,8 +52,6 @@ function defaultState() {
 
         gridCreate(createTileNumbers, createTileNumbers);
     });
-
-
 
     
 }
@@ -74,4 +83,3 @@ function settingChange(buttonPressed) {
     buttonPressed.classList.add('active');
 }
 
- 
