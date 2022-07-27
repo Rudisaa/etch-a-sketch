@@ -5,6 +5,7 @@ const defaultGridCSS = 16;
 const defaultDivAmount = 256;
 
 defaultState();
+tileColorChange();
 
 
 //default grid 
@@ -31,7 +32,6 @@ function defaultState() {
 
         const totalTiles = document.querySelectorAll('.grid-tile');
         let createTileNumbers = document.querySelector('.grid-size-slider').value;
-        console.log(totalTiles);
     
 
         if (createTileNumbers > totalTiles || createTileNumbers < totalTiles) {
@@ -52,13 +52,34 @@ function defaultState() {
 function gridCreate(col, row) {
     const gridContainer = document.querySelector('.grid'); // grabbing container to create tiles inside of it
     const gridColRow = document.querySelector(':root');
+    const gridScaleText = document.querySelector('.grid-size');
     gridColRow.style.setProperty('--grid-col', col) // setting grid-columns to 16
     gridColRow.style.setProperty('--grid-row', row) // setting grid-rows to 16;s
 
+    gridScaleText.textContent = col + ' x ' + row;
 
     for(let i = 0; i < col*row; i++) {
         const defaultGridTiles = document.createElement('div');
         gridContainer.append(defaultGridTiles);
         defaultGridTiles.classList.add('grid-tile');
     }
+}
+
+function settingChange(buttonPressed) {
+    const buttons = document.querySelectorAll('.setting-button');
+
+    for(let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('active');
+    }
+
+    buttonPressed.classList.add('active');
+}
+
+
+// change color of tile when user clicks on it to draw
+function tileColorChange() {
+    const colorPick = document.querySelector('.color-selector').value;
+    console.log(colorPick);
+
+   
 }
