@@ -4,8 +4,7 @@ gridSlider.addEventListener('input', gridCreate);
 const defaultGridCSS = 16;
 const defaultDivAmount = 256;
 
-defaultState();
-tileColorChange();
+defaultState(); 
 
 
 //default grid 
@@ -75,11 +74,4 @@ function settingChange(buttonPressed) {
     buttonPressed.classList.add('active');
 }
 
-
-// change color of tile when user clicks on it to draw
-function tileColorChange() {
-    const colorPick = document.querySelector('.color-selector').value;
-    console.log(colorPick);
-
-   
-}
+ 
