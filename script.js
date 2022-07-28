@@ -1,6 +1,5 @@
 const gridSlider = document.querySelector('.grid-size-slider');
 const gridSize = document.querySelector('.grid-size');
-const gridTile = document.querySelector('grid-tile');
 const colorPick = document.querySelector('.color-selector');
 gridSlider.addEventListener('input', gridCreate);
 
@@ -13,8 +12,11 @@ defaultState();
 
 
 
+
+
 //default grid 
 function defaultState() {
+    //
     const defaultGridSize =  document.querySelector(':root'); // grabbing :root in css file to change the row and column variables
     const gridContainer = document.querySelector('.grid'); // grabbing container to create tiles inside of it
     const slider = document.querySelector('.grid-size-slider');
@@ -25,6 +27,7 @@ function defaultState() {
     
     defaultGridSize.style.setProperty('--grid-col', defaultGridCSS) // setting grid-columns to 16
     defaultGridSize.style.setProperty('--grid-row', defaultGridCSS) // setting grid-rows to 16;
+
 
 
 
@@ -51,9 +54,8 @@ function defaultState() {
         }
 
         gridCreate(createTileNumbers, createTileNumbers);
-    });
 
-    
+    });
 }
 
 //create grid on user click
@@ -83,3 +85,41 @@ function settingChange(buttonPressed) {
     buttonPressed.classList.add('active');
 }
 
+
+let mouseDown = false;
+const isColorButtonActive = document.querySelector('.color-mode')
+const isRainbowButtonActive = document.querySelector('.rainbow-mode');
+const isEraserButtonActive = document.querySelector('.eraser-mode');
+
+document.addEventListener('mouseover', function(e) {
+
+    if(isColorButtonActive.classList.contains('active')) {
+        
+        if(e.target.matches(".grid-tile") && mouseDown === true) {
+            console.log('color-mode');
+            return;
+        }
+    } else if(isRainbowButtonActive.classList.contains('active')) {
+        if(e.target.matches('.grid-tile') && mouseDown === true) {
+            console.log('rainbow mode')
+            return;
+        }
+    } else if(isEraserButtonActive.classList.contains('active')) {
+        if(e.target.matches('.grid-tile') && mouseDown === true) {
+            console.log('eraser')
+            return;
+        }
+    }
+})
+
+
+
+
+document.addEventListener('mousedown', function() {
+    mouseDown = true;
+    console.log(mouseDown);
+})
+
+document.addEventListener('mouseup', function() {
+    mouseDown = false;
+})
