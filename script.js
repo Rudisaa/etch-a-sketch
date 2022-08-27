@@ -1,34 +1,29 @@
+
+//selecting slider for grid size
 const gridSlider = document.querySelector('.grid-size-slider');
+//selecting grid-size to change number texts
 const gridSize = document.querySelector('.grid-size');
+//selecting color selector
 const colorPick = document.querySelector('.color-selector');
 gridSlider.addEventListener('input', gridCreate);
+//setting default size for the grid
 const defaultGridCSS = 16;
+//setting default amount of divs
 const defaultDivAmount = 256;
 
+//running default state function
 defaultState();
-
-
-
-
 
 //default grid 
 function defaultState() {
-    //
     const defaultGridSize =  document.querySelector(':root'); // grabbing :root in css file to change the row and column variables
     const gridContainer = document.querySelector('.grid'); // grabbing container to create tiles inside of it
-    const slider = document.querySelector('.grid-size-slider');
-    const defaultColorMode = document.querySelector('.color-mode');
-
-    defaultColorMode.classList.add('active');
-    
-    
+    const slider = document.querySelector('.grid-size-slider'); // grabbing slider for grid size
+    const defaultColorMode = document.querySelector('.color-mode'); // grabbing button for default state
+    defaultColorMode.classList.add('active'); // setting color-mode button to default active button
     defaultGridSize.style.setProperty('--grid-col', defaultGridCSS) // setting grid-columns to 16
     defaultGridSize.style.setProperty('--grid-row', defaultGridCSS) // setting grid-rows to 16;
 
-
-
-
-   
     // loop through and create default div amount
     for(let i = 0; i < defaultDivAmount; i++) {
         const defaultGridTiles = document.createElement('div');
@@ -38,33 +33,32 @@ function defaultState() {
 
     //event listener to see when user changes grid-size
     slider.addEventListener('input', () => {
-
-
-        const totalTiles = document.querySelectorAll('.grid-tile');
-        let createTileNumbers = document.querySelector('.grid-size-slider').value;
-    
-
+        const totalTiles = document.querySelectorAll('.grid-tile'); // getting total amount of tiles
+        let createTileNumbers = document.querySelector('.grid-size-slider').value; // setting createTileBumers to the value of the slider
+        
+        // if create tile numbers is less than or greater than total tiles then remove all the tiles 
         if (createTileNumbers > totalTiles || createTileNumbers < totalTiles) {
             totalTiles.forEach(tiles => {
                 tiles.remove();
             })
         }
-
+        
+        // create the number of tiles selected.
         gridCreate(createTileNumbers, createTileNumbers);
-
     });
 }
 
 //create grid on user click
 function gridCreate(col, row) {
     const gridContainer = document.querySelector('.grid'); // grabbing container to create tiles inside of it
-    const gridColRow = document.querySelector(':root');
+    const gridColRow = document.querySelector(':root'); // grabbing css variables
     const gridScaleText = document.querySelector('.grid-size');
     gridColRow.style.setProperty('--grid-col', col) // setting grid-columns to 16
-    gridColRow.style.setProperty('--grid-row', row) // setting grid-rows to 16;s
+    gridColRow.style.setProperty('--grid-row', row) // setting grid-rows to 16
 
-    gridScaleText.textContent = col + ' x ' + row;
+    gridScaleText.textContent = col + ' x ' + row; // changing the text above slider to correct number
 
+    //loop through the col*row and create a tile for the grid.
     for(let i = 0; i < col*row; i++) {
         const defaultGridTiles = document.createElement('div');
         gridContainer.append(defaultGridTiles);
@@ -72,17 +66,21 @@ function gridCreate(col, row) {
     }
 }
 
+//function that changes the button clicked to active
 function settingChange(buttonPressed) {
-    const buttons = document.querySelectorAll('.setting-button');
+    const buttons = document.querySelectorAll('.setting-button'); // selecting all buttons for colors
 
+    // loop through all the buttons and remove the active classs
     for(let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('active');
     }
 
+    // add active class to button selected
     buttonPressed.classList.add('active');
 }
 
 
+//
 let mouseDown = false;
 const isColorButtonActive = document.querySelector('.color-mode')
 const isRainbowButtonActive = document.querySelector('.rainbow-mode');
@@ -126,12 +124,12 @@ gridContainer.addEventListener('mouseover', function(e) {
             
 })
 
+//mouse is down set mouse down to true 
 document.addEventListener('mousedown', function() {
     mouseDown = true;
-    console.log('the mouse is down');
 })
 
+//when mouse is up set mouseDown to false
 document.addEventListener('mouseup', function() {
     mouseDown = false;
-    console.log('the mouse is up')
 })
