@@ -90,13 +90,20 @@ let mouseDown = false;
 const isColorButtonActive = document.querySelector('.color-mode')
 const isRainbowButtonActive = document.querySelector('.rainbow-mode');
 const isEraserButtonActive = document.querySelector('.eraser-mode');
+const gridContainer = document.querySelector('.grid')
 
-document.addEventListener('mouseover', function(e) {
+gridContainer.addEventListener('mouseover', function(e) {
+
+    const gridtile = document.querySelector('.grid-tile')
+    const colorChoice = document.querySelector('.color-selector').value;
+    
 
     if(isColorButtonActive.classList.contains('active')) {
         
         if(e.target.matches(".grid-tile") && mouseDown === true) {
-            console.log('color-mode');
+            //changes the background color of the tile the user hovers over
+           e.target.style.setProperty('--grid-color-change', colorChoice);
+            console.log('color-mode')
             return;
         }
     } else if(isRainbowButtonActive.classList.contains('active')) {
@@ -107,19 +114,21 @@ document.addEventListener('mouseover', function(e) {
     } else if(isEraserButtonActive.classList.contains('active')) {
         if(e.target.matches('.grid-tile') && mouseDown === true) {
             console.log('eraser')
+            
             return;
         }
     }
+    
+            
 })
-
-
-
 
 document.addEventListener('mousedown', function() {
     mouseDown = true;
-    console.log(mouseDown);
+    console.log('the mouse is down');
 })
 
 document.addEventListener('mouseup', function() {
     mouseDown = false;
+    console.log('the mouse is up')
 })
+
