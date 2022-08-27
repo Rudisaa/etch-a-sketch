@@ -91,6 +91,7 @@ const isColorButtonActive = document.querySelector('.color-mode')
 const isRainbowButtonActive = document.querySelector('.rainbow-mode');
 const isEraserButtonActive = document.querySelector('.eraser-mode');
 const gridContainer = document.querySelector('.grid')
+const rainbowColorList = ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'];
 
 gridContainer.addEventListener('mouseover', function(e) {
 
@@ -113,6 +114,7 @@ gridContainer.addEventListener('mouseover', function(e) {
         }
     } else if(isEraserButtonActive.classList.contains('active')) {
         if(e.target.matches('.grid-tile') && mouseDown === true) {
+            e.target.style.setProperty('--grid-color-change', '#FFFFFF')
             console.log('eraser')
             
             return;
