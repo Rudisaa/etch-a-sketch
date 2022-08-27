@@ -1,7 +1,7 @@
 :root {
     --grid-col: 1;
     --grid-row: 1;
-    --grid-color-change: #000;
+    --grid-color-change: #FFFFFF;
 }
 
 *, *::after, *::before {
@@ -94,9 +94,6 @@ body {
     border: .01em #131313 solid;
     grid-column: span 1;
     grid-row: span 1;
-    
-}
-
-.color-change {
     background-color: var(--grid-color-change);
+    
 }
