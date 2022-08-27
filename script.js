@@ -2,9 +2,6 @@ const gridSlider = document.querySelector('.grid-size-slider');
 const gridSize = document.querySelector('.grid-size');
 const colorPick = document.querySelector('.color-selector');
 gridSlider.addEventListener('input', gridCreate);
-
-
-
 const defaultGridCSS = 16;
 const defaultDivAmount = 256;
 
@@ -97,6 +94,7 @@ gridContainer.addEventListener('mouseover', function(e) {
 
     const gridtile = document.querySelector('.grid-tile')
     const colorChoice = document.querySelector('.color-selector').value;
+    let colorNum = Math.floor((Math.random() * 7) + 1);
     
 
     if(isColorButtonActive.classList.contains('active')) {
@@ -110,6 +108,10 @@ gridContainer.addEventListener('mouseover', function(e) {
     } else if(isRainbowButtonActive.classList.contains('active')) {
         if(e.target.matches('.grid-tile') && mouseDown === true) {
             console.log('rainbow mode')
+           
+                e.target.style.setProperty('--grid-color-change', rainbowColorList[colorNum]);
+
+        
             return;
         }
     } else if(isEraserButtonActive.classList.contains('active')) {
@@ -133,4 +135,3 @@ document.addEventListener('mouseup', function() {
     mouseDown = false;
     console.log('the mouse is up')
 })
-
