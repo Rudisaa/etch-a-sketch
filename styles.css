@@ -103,3 +103,7 @@ body {
     -ms-user-select: none;
     
 }
+
+.active {
+    background-color: #131313;
+}
