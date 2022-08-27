@@ -80,48 +80,49 @@ function settingChange(buttonPressed) {
 }
 
 
-//
+// setting mouse down to false
 let mouseDown = false;
+// selecting the color mode button
 const isColorButtonActive = document.querySelector('.color-mode')
+// selecting the rainbow mode button
 const isRainbowButtonActive = document.querySelector('.rainbow-mode');
+// selecting the eraser mode button
 const isEraserButtonActive = document.querySelector('.eraser-mode');
+// selecting the grid
 const gridContainer = document.querySelector('.grid')
+// list of colors to select for rainbow mode
 const rainbowColorList = ['#9400D3', '#4B0082', '#0000FF', '#00FF00', '#FFFF00', '#FF7F00', '#FF0000'];
 
+//event listener for when mouse is over the grid
 gridContainer.addEventListener('mouseover', function(e) {
-
-    const gridtile = document.querySelector('.grid-tile')
+    // grabbing the user color choice value
     const colorChoice = document.querySelector('.color-selector').value;
+    // colorNum becomes a random number between 1 and 7
     let colorNum = Math.floor((Math.random() * 7) + 1);
-    
 
+    //if the color-button class is active
     if(isColorButtonActive.classList.contains('active')) {
-        
+        //if the target you mouse over is a grid tile and the mouse click is down then change the background color to the users choice
         if(e.target.matches(".grid-tile") && mouseDown === true) {
             //changes the background color of the tile the user hovers over
-           e.target.style.setProperty('--grid-color-change', colorChoice);
-            console.log('color-mode')
+            e.target.style.setProperty('--grid-color-change', colorChoice);
             return;
         }
     } else if(isRainbowButtonActive.classList.contains('active')) {
+        //if the target is grid-tile and mouse down is true then change color to a random color from the rainbowColorList
         if(e.target.matches('.grid-tile') && mouseDown === true) {
-            console.log('rainbow mode')
-           
-                e.target.style.setProperty('--grid-color-change', rainbowColorList[colorNum]);
-
-        
+            // setting grid-tile to random color
+            e.target.style.setProperty('--grid-color-change', rainbowColorList[colorNum]);
             return;
         }
     } else if(isEraserButtonActive.classList.contains('active')) {
+        //if the grid-tile is a match and mouse down is true change grid-tile to white
         if(e.target.matches('.grid-tile') && mouseDown === true) {
-            e.target.style.setProperty('--grid-color-change', '#FFFFFF')
-            console.log('eraser')
-            
+            //changes grid-tile to white
+            e.target.style.setProperty('--grid-color-change', '#FFFFFF')       
             return;
         }
     }
-    
-            
 })
 
 //mouse is down set mouse down to true 
